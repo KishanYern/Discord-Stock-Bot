@@ -4,7 +4,7 @@ module.exports = {
     },
     async execute(interaction, client) {
         interaction.reply({
-            content: 'https://github.com',
+            content: 'https://github.com/AnhKhoaNG',
         });
     },
 };
