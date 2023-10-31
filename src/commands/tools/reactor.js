@@ -30,13 +30,19 @@ module.exports = {
 
         const reactedUsers = [];
 
+        const channel = client.channels.cache.get('1167960273290793000');
+
         collector.on('collect', (reaction, user) => {
             console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-            reactedUsers.push(user.tag);
+            reactedUsers.push(user.id);
         });
 
         collector.on('end', (collected) => {
             console.log(`Collected ${collected.size} items`);
+            channel.send('Reacted Users:');
+            for (const user of reactedUsers) {
+                channel.send(`<@${user}>`);
+            }
         });
     },
 };
