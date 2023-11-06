@@ -12,6 +12,7 @@
     "dependencies": {
         "discord.js": "^14.13.0",
         "dotenv": "^16.3.1",
-        "live-stock-price": "^1.0.4"
+        "live-stock-price": "^1.0.4",
+        "stocks.js": "^0.0.19"
     }
 }

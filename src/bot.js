@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { token } = process.env;
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const Stocks = require('stocks.js');
 const fs = require('fs');
 
 const client = new Client({ intents: 32767 });
@@ -9,6 +10,7 @@ client.buttons = new Collection();
 client.selectMenus = new Collection();
 client.modals = new Collection();
 client.commandArray = [];
+client.stocks = new Stocks('SYTCQBUIU44BX2G4');
 
 const functionFolder = fs.readdirSync('./src/functions');
 for (const folder of functionFolder) {

@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const liveStockPrice = require('live-stock-price');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,8 +14,10 @@ module.exports = {
 
     async execute(interaction, client) {
         const name = interaction.options.getString('stock-name');
+        const { stocks } = client;
         try {
-            const price = await liveStockPrice(name);
+            // fix from here
+            const results = await liveStockPrice(name);
             await interaction.reply({
                 content: `The current stock price of **${name}** is: $${price}`,
             });
