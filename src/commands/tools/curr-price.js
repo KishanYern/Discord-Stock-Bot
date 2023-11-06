@@ -16,7 +16,7 @@ module.exports = {
         const name = interaction.options.getString('stock-name');
         const { stocks } = client;
         try {
-            // fix from here hello
+            // fix from here
             const results = await liveStockPrice(name);
             await interaction.reply({
                 content: `The current stock price of **${name}** is: $${price}`,
