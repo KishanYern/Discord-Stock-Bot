@@ -24,7 +24,7 @@ npm install live-stock-price
 2. Create a .env file and upload your discord token. [How to get a discord token](https://discord.com/developers/docs/getting-started).
    make sure your .env file is in this format:
    `token=ASDWDWDU`
-   where ASDWDWDU is replaced with your token.
+   where ASDWDWDU is replaced with your discord bot token.
 3. Make sure your bot is in your discord server with administrative permissions and enjoy!
 
 ## References
