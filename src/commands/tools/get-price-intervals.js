@@ -64,7 +64,7 @@ module.exports = {
                 amount: user_amount,
             });
 
-            let parseString = '';
+            let parseString = `Data on **${user_stock_name}**:\n`;
             results.forEach((object) => {
                 const { open, close, date } = object;
                 parseString += `Opened at: $${open.toFixed(

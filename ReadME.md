@@ -6,9 +6,9 @@ This is a discord bot application used for getting stock market information easi
 
 Some important packages used on this project so far are:
 
-1. [Stocks.js](https://github.com/wagenaartje/stocks.js) API
-2. [live-stock-price](https://github.com/tpatel29/live-stock-price) API
-3. [discord.js](https://discord.js.org/)
+1. [Stocks.js](https://github.com/wagenaartje/stocks.js) module
+2. [live-stock-price](https://github.com/tpatel29/live-stock-price) module
+3. [discord.js](https://discord.js.org/) module
 
 ## Local Development
 
@@ -30,6 +30,6 @@ npm install live-stock-price
 ## References
 
 Stocks.js docs [here](https://github.com/wagenaartje/stocks.js)
-Live-stock-price docs [here](https://github.com/tpatel29/live-stock-price)
-Discord.js docs [here](https://discord.js.org/)
-Youtube tutorial to reference [here](https://youtu.be/6IgOXmQMT68?si=fTAhcGinI7Nxdptj)
+\ Live-stock-price docs [here](https://github.com/tpatel29/live-stock-price)
+\ Discord.js docs [here](https://discord.js.org/)
+\ Youtube tutorial to reference [here](https://youtu.be/6IgOXmQMT68?si=fTAhcGinI7Nxdptj)
