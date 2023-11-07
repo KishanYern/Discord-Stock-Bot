@@ -30,6 +30,6 @@ npm install live-stock-price
 ## References
 
 Stocks.js docs [here](https://github.com/wagenaartje/stocks.js)
-\ Live-stock-price docs [here](https://github.com/tpatel29/live-stock-price)
-\ Discord.js docs [here](https://discord.js.org/)
-\ Youtube tutorial to reference [here](https://youtu.be/6IgOXmQMT68?si=fTAhcGinI7Nxdptj)
+<br />Live-stock-price docs [here](https://github.com/tpatel29/live-stock-price)
+<br />Discord.js docs [here](https://discord.js.org/)
+<br />Youtube tutorial to reference [here](https://youtu.be/6IgOXmQMT68?si=fTAhcGinI7Nxdptj)
