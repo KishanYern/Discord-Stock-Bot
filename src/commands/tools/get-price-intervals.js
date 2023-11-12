@@ -64,9 +64,11 @@ module.exports = {
                 amount: user_amount,
             });
 
+            const highValues = [];
+
             let parseString = `Information on **${user_stock_name}** at **${user_amount}** **${user_interval_time} intervals**:\n`;
             results.forEach((object) => {
-                const { open, close, date } = object;
+                const { open, close, date, high } = object;
                 parseString += `On ${date}, the stock opened at $${open} and closed at $${close}.`;
                 parseString += '\n';
             });
