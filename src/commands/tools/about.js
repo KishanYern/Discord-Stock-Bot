@@ -26,4 +26,4 @@ module.exports = {
 
         await interaction.showModal(modal);
     },
-};
+}; // can add mongodb to this too

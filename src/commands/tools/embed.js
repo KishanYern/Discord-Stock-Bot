@@ -2,13 +2,15 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('embed')
-        .setDescription('Returns an embed'),
+        .setName('about')
+        .setDescription('Returns information about the project.'),
 
     async execute(interaction, client) {
         const embed = new EmbedBuilder()
             .setTitle(`Stocks Bot Project`)
-            .setDescription('This will have various real-time stock commands')
+            .setDescription(
+                'This will have various real-time stock commands. This was made as one of the first projects to practice javascript, specifically discordjs.'
+            )
             .setColor(0x18e1ee)
             .setImage(client.user.displayAvatarURL())
             .setThumbnail(client.user.displayAvatarURL())
@@ -17,16 +19,16 @@ module.exports = {
                 iconURL: client.user.displayAvatarURL(),
                 text: client.user.tag,
             })
-            .setURL('https://youtube.com')
+            .setURL('https://github.com/KishanYern/Discord-Stock-Bot.git')
             .addFields([
                 {
-                    name: 'Field 1',
-                    value: 'Field value 1',
+                    name: "Kishan's Github",
+                    value: 'https://github.com/KishanYern',
                     inline: true,
                 },
                 {
-                    name: 'Field 2',
-                    value: 'Field value 2',
+                    name: "Khoa's Github",
+                    value: 'https://github.com/AnhKhoaNG',
                     inline: true,
                 },
             ]);
