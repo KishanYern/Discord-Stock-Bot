@@ -35,7 +35,14 @@ module.exports = {
         }
 
         try {
-            const member = await interaction.guild.members.fetch(user);
+            console.log(user);
+            const member = await interaction.guild.members.fetch(user.id);
+            if (member.roles.cache.has(muteRole.id)) {
+                interaction.reply({
+                    content: 'user is already muted',
+                });
+                return;
+            } // check to see if the user already has the role
 
             await member.roles.add(muteRole);
 
@@ -45,15 +52,13 @@ module.exports = {
 
             // Set a timeout to unmute the user after the specified duration
             setTimeout(async () => {
-                // Remove the mute role
-                // Replace the following line with your actual unmuting logic
                 await member.roles.remove(muteRole);
-                // Inform the user that they have been unmuted
                 await user.send(
                     `You have been unmuted in ${interaction.guild.name}`
-                );
-            }, time * 60000); // Convert minutes to milliseconds
+                ); // sends the user a dm, telling them that they have been unmuted
+            }, time * 60000);
         } catch (err) {
+            console.error(err);
             interaction.reply({
                 content: 'There is no such user.',
             });
