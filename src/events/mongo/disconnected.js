@@ -1,8 +1,8 @@
-const chalk = require('chalk');
-
 module.exports = {
     name: 'disconnecting',
-    execute(client) {
-        console.log(chalk.red('[Database Status]: Disconnected.'));
+    async execute(client) {
+        const chalk = await import('chalk');
+
+        console.log(chalk.default.red('[Database Status]: Disconnected.'));
     },
 };

@@ -1,4 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
+const User = require('../../schemas/user');
+const mongoose = require('mongoose');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -23,28 +25,44 @@ module.exports = {
                 .setName('fav-stock')
                 .setDescription('Out of these, which is your favorite stock?')
                 .setAutocomplete(false)
-                .setRequired(true)
+                .setRequired(false)
         ),
 
-    async autocomplete(interaction, client) {
-        const focusedValue = interaction.options.getFocused();
-        let choices;
-        const filtered = choices.filter((choice) =>
-            choice.startsWith(focusedValue)
-        );
-        await interaction.respond(
-            filtered.map((choice) => ({ name: choice, value: choice }))
-        );
-    },
-
     async execute(interaction, client) {
-        const stock = interaction.options.getString('fav-stock');
+        const favStock = interaction.options.getString('fav-stock');
         const name = interaction.options.getString('name');
         const age = interaction.options.getNumber('age');
-        await interaction.reply({
-            content: `Hello ${name}, You are ${age} years old and your favorite stock is: **${stock}**`,
-        });
+        let userProfile = await User.findOne({ userId: interaction.user.id });
+
+        if (!userProfile) {
+            // if user is not in database
+            userProfile = await new User({
+                _id: new mongoose.Types.ObjectId(),
+                userPreferedName: name,
+                userName: interaction.user.username,
+                userId: interaction.user.id,
+                userIcon: interaction.user.avatarURL() || null,
+                userAge: age,
+                userFavStock: favStock || null,
+            });
+            userProfile.save().catch(console.error);
+            await interaction.reply({
+                content: `You have been registered in **${interaction.guild.name}**!`,
+            });
+        } else {
+            // if user is in database but extra info needs to be added
+            await User.updateOne(
+                { userId: interaction.user.id },
+                {
+                    $set: {
+                        userIcon: interaction.user.avatarURL() || null,
+                        userFavStock: favStock || null,
+                    },
+                }
+            );
+            await interaction.reply({
+                content: `${userProfile.userPreferedName} is already registered in the server!`,
+            });
+        }
     },
 };
-
-// can use SQL or mongodb for this to register

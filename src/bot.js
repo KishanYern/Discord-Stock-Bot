@@ -1,9 +1,10 @@
 require('dotenv').config();
 const { token, databaseToken } = process.env;
 const { connect } = require('mongoose');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const Stocks = require('stocks.js');
 const fs = require('fs');
+const { collection } = require('./schemas/user');
 
 const client = new Client({ intents: 32767 });
 client.commands = new Collection();
@@ -30,3 +31,6 @@ client.login(token);
 (async () => {
     await connect(databaseToken).catch(console.error);
 })();
+// (async () => {
+//     await collection.createIndex({ userId: 1 });
+// })(); // To create an Index
