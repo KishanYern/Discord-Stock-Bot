@@ -35,7 +35,6 @@ module.exports = {
         }
 
         try {
-            console.log(user);
             const member = await interaction.guild.members.fetch(user.id);
             if (member.roles.cache.has(muteRole.id)) {
                 interaction.reply({
