@@ -50,18 +50,8 @@ module.exports = {
                 content: `You have been registered in **${interaction.guild.name}**!`,
             });
         } else {
-            // if user is in database but extra info needs to be added
-            await User.updateOne(
-                { userId: interaction.user.id },
-                {
-                    $set: {
-                        userIcon: interaction.user.avatarURL() || null,
-                        userFavStock: favStock || null,
-                    },
-                }
-            );
             await interaction.reply({
-                content: `${userProfile.userPreferedName} is already registered in the server!`,
+                content: `${userProfile.userPreferedName} is already registered in the database! If you want to update your profile, try the /update-profile command.`,
             });
         }
     },
