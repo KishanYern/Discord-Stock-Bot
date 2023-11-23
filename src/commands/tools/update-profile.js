@@ -29,6 +29,7 @@ module.exports = {
             });
             return;
         }
+
         const name =
             interaction.options.getString('name') ||
             userProfile.userPreferedName;
@@ -36,10 +37,11 @@ module.exports = {
             interaction.options.getString('fav-stock') ||
             userProfile.userFavStock;
 
-        await userProfile.updateOne(
+        await User.updateOne(
             { userId: interaction.user.id },
-            { $set: { userName: name, userFavStock: fav_stock } }
+            { $set: { userPreferedName: name, userFavStock: fav_stock } }
         );
+
         await interaction.reply({
             content: 'Updated profile!',
         });
