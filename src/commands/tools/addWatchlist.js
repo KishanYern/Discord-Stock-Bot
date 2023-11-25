@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const watchlist = require('../../schemas/watchlist');
 const mongoose = require('mongoose');
+const liveStockPrice = require('live-stock-price');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -20,7 +21,17 @@ module.exports = {
         let userWatchlist = await watchlist.findOne({
             userId: interaction.user.id,
         });
+        let currPrice;
 
+        try {
+            currPrice = await liveStockPrice(stock_name);
+        } catch (err) {
+            await interaction.reply({
+                content: `${stock_name} is not a valid stock name`,
+            });
+            console.log(`${stock_name} is not a valid stock name`);
+            return;
+        }
         if (!userWatchlist) {
             // user is not in the database
             userWatchlist = await new watchlist({
@@ -32,19 +43,9 @@ module.exports = {
             userWatchlist.save().catch(console.error);
 
             await interaction.reply({
-                content: `A watchlist had been created and ${stock_name} has been added to your watchlist`,
+                content: `A watchlist had been created and ${stock_name} has been added to your watchlist. \nThe current price is: $${currPrice}`,
             });
         } else {
-            // watchlist.updateOne(
-            //     { userId: interaction.user.id },
-            //     {
-            //         $set: {
-            //             userWatchlistItems:
-            //                 userWatchlist.userWatchlistItems.push(stock_name),
-            //         },
-            //     }
-            // );
-
             userWatchlist.userWatchlistItems.push(stock_name);
             userWatchlist.save().catch(console.error);
             await interaction.reply({
