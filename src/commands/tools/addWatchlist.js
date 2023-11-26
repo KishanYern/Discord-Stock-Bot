@@ -28,10 +28,12 @@ module.exports = {
         } catch (err) {
             await interaction.reply({
                 content: `${stock_name} is not a valid stock name`,
+                ephemeral: true,
             });
             console.log(`${stock_name} is not a valid stock name`);
             return;
-        }
+        } // check if the stock exists
+
         if (!userWatchlist) {
             // user is not in the database
             userWatchlist = await new watchlist({
@@ -43,13 +45,13 @@ module.exports = {
             userWatchlist.save().catch(console.error);
 
             await interaction.reply({
-                content: `A watchlist had been created and ${stock_name} has been added to your watchlist. \nThe current price is: $${currPrice}`,
+                content: `A watchlist had been created and ${stock_name} has been added to your watchlist. \nThe current price of ${stock_name} is: $${currPrice}`,
             });
         } else {
             userWatchlist.userWatchlistItems.push(stock_name);
             userWatchlist.save().catch(console.error);
             await interaction.reply({
-                content: `${stock_name} has been added to your watchlist`,
+                content: `${stock_name} has been added to your watchlist. \nThe current price of ${stock_name} is: $${currPrice}`,
             });
         }
     },
