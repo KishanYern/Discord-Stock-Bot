@@ -11,10 +11,10 @@ module.exports = {
             userId: interaction.user.id,
         });
 
-        if (!userWatchlist) {
+        if (!userWatchlist.userWatchlistItems) {
             await interaction.reply({
                 content:
-                    'You do not have a watchlist. Try using the **/add-watchlist** command',
+                    'Your watchlist is empty or does not exist. Try using the **/add-watchlist** command',
                 ephemeral: true,
             });
             return;
