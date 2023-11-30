@@ -69,7 +69,9 @@ module.exports = {
             let parseString = `Information on **${user_stock_name}** for **${user_amount}** **${user_interval_time} intervals**:\n`;
             results.forEach((object) => {
                 const { open, close, date } = object;
-                parseString += `On ${date}, the stock opened at $${open} and closed at $${close}.`;
+                parseString += `On ${date}, the stock opened at $${open.toFixed(
+                    2
+                )} and closed at $${close.toFixed(2)}.`;
                 parseString += '\n';
             });
 

@@ -48,6 +48,13 @@ module.exports = {
                 content: `A watchlist had been created and ${stock_name} has been added to your watchlist. \nThe current price of ${stock_name} is: $${currPrice}`,
             });
         } else {
+            if (userWatchlist.userWatchlistItems.includes(stock_name)) {
+                await interaction.reply({
+                    content: `${stock_name} is already in your watchlist. Try using the **/view-watchlist** command to see your current watchlist`,
+                    ephemeral: true,
+                });
+                return;
+            }
             userWatchlist.userWatchlistItems.push(stock_name);
             userWatchlist.save().catch(console.error);
             await interaction.reply({
