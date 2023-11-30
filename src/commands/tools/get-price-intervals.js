@@ -27,6 +27,8 @@ module.exports = {
                 .setDescription(
                     'How many values in those intervals of time do you want?'
                 )
+                .setMaxValue(50)
+                .setMinValue(1)
         ),
 
     async autocomplete(interaction, client) {
@@ -64,7 +66,7 @@ module.exports = {
                 amount: user_amount,
             });
 
-            let parseString = `Information on **${user_stock_name}** at **${user_amount}** **${user_interval_time} intervals**:\n`;
+            let parseString = `Information on **${user_stock_name}** for **${user_amount}** **${user_interval_time} intervals**:\n`;
             results.forEach((object) => {
                 const { open, close, date } = object;
                 parseString += `On ${date}, the stock opened at $${open} and closed at $${close}.`;
@@ -82,4 +84,3 @@ module.exports = {
         }
     },
 };
-// can use live-stock-price API to get live prices and stocks.js API to get past values

@@ -21,7 +21,9 @@ module.exports = {
         }
 
         await interaction.reply({
-            content: `${userWatchlist.userName}'s Watchlist:\n${userWatchlist.userWatchlistItems}`,
+            content: `${
+                userWatchlist.userName
+            }'s Watchlist:\n${userWatchlist.userWatchlistItems.join('\n')}`,
         });
     },
 };
