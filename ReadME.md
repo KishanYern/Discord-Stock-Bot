@@ -34,7 +34,8 @@ npm install mongoose
 
 ### get-current-price
 
-The `get-current-price` command takes one argument, which is required, and returns the current price of the stock at that time. For this, we use the `live-stock-price` module. An example is as follows:
+The `get-current-price` command takes one argument, which is required, and returns the current price of the stock at that time. For this, we use the `live-stock-price` module. <br />
+Usage:
 
 ```
 Command:
@@ -44,7 +45,8 @@ Discord Output:
 Current price of AAPL is: $190.32
 ```
 
-To handle invalid stock names, the function will throw an error leading the discord bot to reply accordingly. It will also log the error in the console, but will not stop the bot from running. An example is as follows:
+To handle invalid stock names, the function will throw an error leading the discord bot to reply accordingly. It will also log the error in the console, but will not stop the bot from running. <br />
+Usage:
 
 ```
 Command:
@@ -56,7 +58,8 @@ Invalid Stock Name!
 
 ### get-price-intervals
 
-The `get-price-intervals` command takes three required arguments. They are stock-name, interval-time, and amount in that order. This command returns `amount` number of data at `interval-time` intervals on the `stock-name` stock. For example, `/get-price-intervals stock-name: AAPL interval-time: 15min amount: 10` returns 10 high and low values of AAPL in intervals of 15 minutes. An example of the Discord Output is as follows:
+The `get-price-intervals` command takes three required arguments. They are stock-name, interval-time, and amount in that order. This command returns `amount` number of data at `interval-time` intervals on the `stock-name` stock. For example, `/get-price-intervals stock-name: AAPL interval-time: 15min amount: 10` returns 10 high and low values of AAPL in intervals of 15 minutes. <br />
+Usage:
 
 ```
 Command:
@@ -88,7 +91,8 @@ These commands use MongoDB as the database system. It requires a MongoDB token i
 
 ### add-watchlist
 
-If the user does not have an existing database document in the watchlist collection, then this command will add a document with the user's information, mentioned in src\schemas folder. Then it will add the item to the watchlist. For example:
+If the user does not have an existing database document in the watchlist collection, then this command will add a document with the user's information, mentioned in src\schemas folder. Then it will add the item to the watchlist.<br />
+Usage:
 
 ```
 Command:
@@ -99,7 +103,8 @@ A watchlist had been created and AAPL has been added to your watchlist.
 The current price of AAPL is: $190.32
 ```
 
-If the user already has an existing document in the watchlist collection, the command will just append the item to the document. For example:
+If the user already has an existing document in the watchlist collection, the command will just append the item to the document.<br />
+Usage:
 
 ```
 Command:
@@ -110,7 +115,9 @@ TSLA has been added to your watchlist.
 The current price of TSLA is: $240.52
 ```
 
-The command will not add an item to the database if the stock does not exist and logs it in the console. For example:
+The command will not add an item to the database if the stock does not exist and logs it in the console.
+<br />
+Usage:
 
 ```
 Command:
@@ -128,6 +135,63 @@ Command:
 
 Discord Output:
 TSLA is already in your watchlist. Try using the /view-watchlist command to see your current watchlist
+```
+
+### view-watchlist
+
+This command displays the currently saved watchlist for the userId in the database.
+<br />
+Usage:
+
+```
+Command:
+/view-watchlist
+
+Discord Output:
+Kishan's Watchlist:
+AAPL
+TSLA
+```
+
+### remove-watchlist
+
+This command will remove a specified item in your watchlist
+<br />
+Usage:
+
+```
+Command:
+/remove-watchlist AAPL
+
+Discord Output:
+AAPL has been removed from your watchlist. Try using the /view-watchlist command to view your current watchlist.
+
+Command:
+/view-watchlist
+
+Discord Output:
+Kishan's Watchlist:
+TSLA
+```
+
+### clear-watchlist
+
+This command will reset your watchlist array in the database
+<br />
+Usage:
+
+```
+Command:
+/clear-watchlist
+
+Discord Output:
+Your watchlist has been cleared.
+
+Command:
+/view-watchlist
+
+Discord Output:
+Your watchlist is empty or does not exist. Try using the /add-watchlist command
 ```
 
 ## References

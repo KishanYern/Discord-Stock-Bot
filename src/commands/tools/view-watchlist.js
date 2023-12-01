@@ -11,7 +11,7 @@ module.exports = {
             userId: interaction.user.id,
         });
 
-        if (!userWatchlist.userWatchlistItems) {
+        if (!userWatchlist.userWatchlistItems.length) {
             await interaction.reply({
                 content:
                     'Your watchlist is empty or does not exist. Try using the **/add-watchlist** command',
