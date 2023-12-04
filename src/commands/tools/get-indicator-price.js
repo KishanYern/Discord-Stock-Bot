@@ -1,5 +1,60 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionResponse } = require('discord.js');
 
+const indicators = [
+    'SMA',
+    'EMA',
+    'WMA',
+    'DEMA',
+    'TEMA',
+    'TRIMA',
+    'KAMA',
+    'MAMA',
+    'VWAP',
+    'T3',
+    'MACD',
+    'MACDEXT',
+    'STOCH',
+    'STOCHF',
+    'RSI',
+    'STOCHRSI',
+    'WILLR',
+    'ADX',
+    'ADXR',
+    'APO',
+    'PPO',
+    'MOM',
+    'BOP',
+    'CCI',
+    'CMO',
+    'ROC',
+    'ROCR',
+    'AROON',
+    'AROONOSC',
+    'MFI',
+    'TRIX',
+    'ULTOSC',
+    'DX',
+    'MINUS_DI',
+    'PLUS_DI',
+    'MINUS_DM',
+    'PLUS_DM',
+    'BBANDS',
+    'MIDPOINT',
+    'MIDPRICE',
+    'SAR',
+    'TRANGE',
+    'ATR',
+    'NATR',
+    'AD',
+    'ADOSC',
+    'OBV',
+    'HT_TRENDLINE',
+    'HT_SINE',
+    'HT_TRENDMODE',
+    'HT_DCPERIOD',
+    'HT_DCPHASE',
+    'HT_PHASOR',
+];
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('get-technical-indicator')
@@ -23,7 +78,6 @@ module.exports = {
             option
                 .setName('indicator')
                 .setRequired(true)
-                .setAutocomplete(true)
                 .setDescription(
                     'What is the name of the indicator you want to use?'
                 )
@@ -48,10 +102,70 @@ module.exports = {
         ),
 
     async autocomplete(interaction, client) {
-        const focusedValue = interaction.options.getFocused(true);
+        const focusedValue = interaction.options.getFocused();
+        const choices = [
+            '1min',
+            '5min',
+            '15min',
+            '30min',
+            '60min',
+            'daily',
+            'weekly',
+            'monthly',
+        ];
+
+        const filtered = choices.filter((choice) =>
+            choice.startsWith(focusedValue)
+        );
+        await interaction.respond(
+            filtered.map((choice) => ({ name: choice, value: choice }))
+        );
     },
 
-    async execute(interaction, client) {},
+    async execute(interaction, client) {
+        const interval = interaction.options.getString('interval');
+        const indicator = interaction.options.getString('indicator');
+        const stock_name = interaction.options.getString('stock-name');
+        const amount = interaction.options.getInteger('amount');
+        const time_period = interaction.options.getInteger('time-period');
+
+        const { stocks } = client;
+
+        if (!indicators.includes(indicator)) {
+            await interaction.reply({
+                content: `${indicator} is not a valid indicator. try using the **/get-indicator2** command to see the list of valid indicators`,
+                ephemeral: true,
+            });
+            return;
+        }
+
+        try {
+            const result = await stocks.technicalIndicator({
+                symbol: stock_name,
+                interval: interval,
+                amount: amount,
+                time_period: time_period,
+                indicator: indicator,
+            });
+
+            let parseString = `Information on ${stock_name} with indicator '${indicator}':\n`;
+            result.map((data) => {
+                const { date } = data;
+                const indicator_data = data[`${indicator}`];
+                parseString += `On ${date}, the indicator(${indicator}) value was: ${indicator_data}\n`;
+            });
+
+            await interaction.reply({
+                content: parseString,
+            });
+        } catch (err) {
+            await interaction.reply({
+                content: 'Something went wrong!',
+                ephemeral: true,
+            });
+            console.log(err);
+        }
+    },
 };
 
 //A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions
