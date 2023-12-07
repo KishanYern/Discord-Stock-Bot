@@ -160,12 +160,10 @@ module.exports = {
             });
         } catch (err) {
             await interaction.reply({
-                content: 'Something went wrong!',
+                content: 'Invalid stock name!',
                 ephemeral: true,
             });
             console.log(err);
         }
     },
 };
-
-//A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions

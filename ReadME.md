@@ -85,6 +85,28 @@ The `amount` option has to be between 1 and 50 (inclusive)
 
 To handle any errors such as invalid stock name, the stocks.js package by default terminates the application by throwing an error.
 
+### get-technical-indicator
+
+A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions. This command will get the indicator values for a given stock name. The command takes a `stock-name`, `interval`, `indicator`, `amount`, and `time-period` inputs respectively. The available indicators can be found using the `/get-indicators` command. The command also checks if it is a valid indicator and stock name and responds accordingly.
+
+```
+Command:
+/get-indicator-price AAPL 15mins ADX 10 10
+
+Discord Output:
+Information on AAPL with indicator 'ADX':
+On Wed Dec 06 2023 17:45:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 48.5778
+On Wed Dec 06 2023 17:30:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 48.4717
+On Wed Dec 06 2023 17:15:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 48.3658
+On Wed Dec 06 2023 17:00:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 48.087
+On Wed Dec 06 2023 16:45:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 47.8156
+On Wed Dec 06 2023 16:30:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 47.5579
+On Wed Dec 06 2023 16:15:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 47.3117
+On Wed Dec 06 2023 16:00:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 46.9947
+On Wed Dec 06 2023 15:45:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 46.6228
+On Wed Dec 06 2023 15:30:00 GMT-0600 (Central Standard Time), the indicator(ADX) value was: 46.2155
+```
+
 ## Database Commands
 
 These commands use MongoDB as the database system. It requires a MongoDB token in the dotenv file mentioned above in the Local Development section.
