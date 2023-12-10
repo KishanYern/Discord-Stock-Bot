@@ -12,7 +12,7 @@ module.exports = {
         });
 
         const emoji = client.emojis.cache.find(
-            (emoji) => emoji.id == '1168322296210002025'
+            (emoji) => emoji.id == '1168322296210002025' // which emoji or emoji's you want to react with
         );
 
         message.react(emoji);
@@ -21,14 +21,14 @@ module.exports = {
             return (
                 reaction.emoji.id == emoji.id && interaction.user.id == user.id
             );
-        };
+        }; // filter function
 
         const collector = message.createReactionCollector({
             filter,
             time: 5000,
         });
 
-        const reactedUsers = [];
+        const reactedUsers = []; // collects users who reacted
 
         const channel = client.channels.cache.get('1167960273290793000');
 
@@ -42,7 +42,7 @@ module.exports = {
             channel.send('Reacted Users:');
             for (const user of reactedUsers) {
                 channel.send(`<@${user}>`);
-            }
+            } // @s everyone who reacts
         });
     },
 };

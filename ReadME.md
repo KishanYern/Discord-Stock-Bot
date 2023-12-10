@@ -218,8 +218,8 @@ Your watchlist is empty or does not exist. Try using the /add-watchlist command
 
 ## General Commands
 
-This bot also contains some general commands, such as a reactor (with a collector) in the [reactor](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/Register.js) file. It also contains a [mute](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/mute.js), [menu](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/menu.js), [embed](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/embed.js), [ping](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/ping.js), and a [modal](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/about.js) commands.<br />
-The purpose of these commands are so that the user can personalize each of them for their own required needs.
+This bot also contains some general commands, such as a reactor (with a collector) in the [reactor](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/Register.js) file. It also contains a [mute](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/mute.js), [menu](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/menu.js), [embed](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/embed.js), [ping](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/ping.js), and [modal](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/about.js) commands.<br />
+Most of them are classified under the components folder [here](https://github.com/KishanYern/Discord-Stock-Bot/tree/master/src/components).The purpose of these commands are so that the user can personalize each of them for their own required needs.
 
 ## References
 

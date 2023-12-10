@@ -54,11 +54,12 @@ const indicators = [
     'HT_DCPERIOD',
     'HT_DCPHASE',
     'HT_PHASOR',
-];
+]; // list of possible indicators
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('get-technical-indicator')
-        .setDescription('Retrives a technical indicator!')
+        .setDescription("Retrives a technical indicator's data!")
         .addStringOption((option) =>
             option
                 .setName('stock-name')
@@ -120,7 +121,7 @@ module.exports = {
         await interaction.respond(
             filtered.map((choice) => ({ name: choice, value: choice }))
         );
-    },
+    }, // autocomplete's the interval option
 
     async execute(interaction, client) {
         const interval = interaction.options.getString('interval');
@@ -137,7 +138,7 @@ module.exports = {
                 ephemeral: true,
             });
             return;
-        }
+        } // checks for valid indicator
 
         try {
             const result = await stocks.technicalIndicator({
@@ -152,7 +153,9 @@ module.exports = {
             result.map((data) => {
                 const { date } = data;
                 const indicator_data = data[`${indicator}`];
-                parseString += `On ${date}, the indicator(${indicator}) value was: ${indicator_data}\n`;
+                parseString += `On ${date}, the indicator(${indicator}) value was: ${indicator_data.toFixed(
+                    3
+                )}\n`;
             });
 
             await interaction.reply({

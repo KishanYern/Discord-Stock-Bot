@@ -25,10 +25,10 @@ module.exports = {
         if (!userProfile) {
             await interaction.reply({
                 content:
-                    'You have not registered yet. Try using the /register command',
+                    'You have not registered yet. Try using the **/register** command',
             });
             return;
-        }
+        } // user must register in the User collection
 
         const name =
             interaction.options.getString('name') ||

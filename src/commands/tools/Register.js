@@ -45,13 +45,13 @@ module.exports = {
                 userAge: age,
                 userFavStock: favStock || null,
             });
-            userProfile.save().catch(console.error);
+            userProfile.save().catch(console.error); // creates user in the database
             await interaction.reply({
                 content: `You have been registered in **${interaction.guild.name}**!`,
             });
         } else {
             await interaction.reply({
-                content: `${userProfile.userPreferedName} is already registered in the database! If you want to update your profile, try the /update-profile command.`,
+                content: `${userProfile.userPreferedName} is already registered in the database! If you want to update your profile, try the **/update-profile** command.`,
             });
         }
     },

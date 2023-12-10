@@ -18,7 +18,7 @@ module.exports = {
                 ephemeral: true,
             });
             return;
-        }
+        } // empty watchlist check
 
         await interaction.reply({
             content: `${

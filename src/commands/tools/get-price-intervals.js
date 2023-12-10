@@ -50,7 +50,7 @@ module.exports = {
         await interaction.respond(
             filtered.map((choice) => ({ name: choice, value: choice }))
         );
-    },
+    }, // autocomplete's the interval option
 
     async execute(interaction, client) {
         const user_stock_name = interaction.options.getString('stock-name');
