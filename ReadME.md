@@ -87,7 +87,7 @@ To handle any errors such as invalid stock name, the stocks.js package by defaul
 
 ### get-technical-indicator
 
-A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions. This command will get the indicator values for a given stock name. The command takes a `stock-name`, `interval`, `indicator`, `amount`, and `time-period` inputs respectively. The available indicators can be found using the `/get-indicators` command. The command also checks if it is a valid indicator and stock name and responds accordingly.
+A technical indicator is a mathematical pattern derived from historical data used by technical traders or investors to predict future price trends and make trading decisions. This command will get the indicator values for a given stock name. The command takes a `stock-name`, `interval`, `indicator`, `amount`, and `time-period` inputs (in that order). The available indicators can be found using the `/get-indicators` command. This command also checks if the input indicator and stock name are valid and responds accordingly.
 
 ```
 Command:
@@ -215,6 +215,11 @@ Command:
 Discord Output:
 Your watchlist is empty or does not exist. Try using the /add-watchlist command
 ```
+
+## General Commands
+
+This bot also contains some general commands, such as a reactor (with a collector) in the [reactor](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/Register.js) file. It also contains a [mute](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/mute.js), [menu](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/menu.js), [embed](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/embed.js), [ping](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/ping.js), and a [modal](https://github.com/KishanYern/Discord-Stock-Bot/blob/master/src/commands/tools/about.js) commands.<br />
+The purpose of these commands are so that the user can personalize each of them for their own required needs.
 
 ## References
 
