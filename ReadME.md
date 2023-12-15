@@ -13,7 +13,7 @@ Some important packages used on this project are:
 
 ## Local Development
 
-1. In your project folder, run npm install and install all the dependancies doing the following:
+1. In your project folder, run npm install and install all the dependencies doing the following:
 
 ```
 npm install
